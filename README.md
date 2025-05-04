@@ -13,7 +13,7 @@ Additionally, I have went out of my way to use Docker for this project. Although
 ### ***Prerequistes***
 
 - [Docker](https://www.docker.com/) (for Docker installation)
-- [NodeJS](https://nodejs.org)
+- [NodeJS](https://nodejs.org) (for manual installation)
 
 ### Docker
 
