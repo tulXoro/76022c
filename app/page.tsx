@@ -6,6 +6,8 @@ import '@xyflow/react/dist/style.css';
 
 import FormNode from "./_components/FormNode";
 
+import { ApiRoute } from './_lib/ApiRoute';
+
 const nodeTypes = {
   form: FormNode,
 }
@@ -18,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       // Note: port is arbitrarily set to 4000 because the frontend is already using 3000
-      const response = await fetch('http://localhost:4000/api/v1/1/actions/blueprints/1/graph', { method: 'GET' });
+      const response = await fetch(ApiRoute, { method: 'GET' });
       try {
         const data = await response.json();
         // console.log(data)
