@@ -47,16 +47,22 @@ export default function FormNode({ data }) {
     </div>
   );
 }
-// Example of form
+// Example of form. 
+// Marker key ================================================
+// x implemented
+// ? no idea / pending
+// - means it is in progress
+// > should be implemented in the future
+// ===========================================================
 // "forms": [
 //     {
-//       "id": "f_01jk7ap2r3ewf9gx6a9r09gzjv",
-//       "name": "test form",
-//       "description": "test",
-//       "is_reusable": false,
-//       "field_schema": {
-//         "type": "object",
-//         "properties": {
+//       "id": "f_01jk7ap2r3ewf9gx6a9r09gzjv", x
+//       "name": "test form", x
+//       "description": "test", x
+//       "is_reusable": false, >
+//       "field_schema": { -
+//         "type": "object", ?
+//         "properties": { -
 //           "button": {
 //             "avantos_type": "button",
 //             "title": "Button",
