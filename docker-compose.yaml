@@ -1,0 +1,19 @@
+services:
+  frontend-challenge:
+    container_name: frontend-challenge
+    image: frontend-challenge
+    develop:
+      watch:
+        - action: sync
+          path: /app
+          target: /app/app
+          ignore:
+            - node_modules
+        - action: sync
+          path: /components
+          target: /app/components
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
