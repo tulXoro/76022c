@@ -26,13 +26,15 @@ export default function Home() {
         // console.log(data)
 
         const formNodes = data.nodes.map((node) => {
+          // find all forms corresponding to the current node
           const correspondingForm = data.forms.find((form) => form.id === node.data.component_id);
           
             return {
               ...node,
               data: {
                 ...node.data,
-                form: correspondingForm || null
+                form: correspondingForm || null,
+
               }
             } 
           

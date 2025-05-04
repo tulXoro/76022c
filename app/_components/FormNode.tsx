@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Handle, Position } from "@xyflow/react";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 export default function FormNode({ data }) {
+  const [prefill, setPrefill] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [form, setForm] = useState(data.form)
+  const [form, setForm] = useState(data.form);
 
   const handleNodeClick = () => {
-    setIsModalOpen(true); 
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false); 
+    setIsModalOpen(false);
   };
 
   return (
     <div>
       <div
         className="w-30 border-1 border-gray-300 bg-white cursor-pointer p-2 rounded-xl"
-        onClick={handleNodeClick} 
+        onClick={handleNodeClick}
       >
-        <label className="text-xs font-bold text-gray-400">Form</label>
+        <h1 className="text-xs font-bold text-gray-400">Form</h1>
         <div className="text-sm text-gray-700">{data.name}</div>
 
         {data.prerequisites && data.prerequisites.length > 0 && (
@@ -30,11 +33,24 @@ export default function FormNode({ data }) {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 cursor-default">
+        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 cursor-default">
           <div className="bg-white p-4 rounded shadow-2xl border-1">
             <h2>{form.name}</h2>
             <p>{form.description}</p>
-            <p>Prerequisites: {data.prerequisites?.join(", ") || "None"}</p>
+            <hr className="my-3"/>
+            <Label htmlFor="prefill-switch">Prefill</Label>
+            <div className="flex flex-row items-center space-x-4">
+              <p className="text-xs w-44 text-gray-400">Prefill fields for this form</p>
+              <Switch id="prefill-switch"
+                checked={prefill}
+                onCheckedChange={setPrefill}
+              ></Switch>
+            </div>
+
+            <form>
+              
+              </form>
+
             <button
               className="mt-4 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
               onClick={closeModal}
@@ -47,7 +63,7 @@ export default function FormNode({ data }) {
     </div>
   );
 }
-// Example of form. 
+// Example of form.
 // Marker key ================================================
 // x implemented
 // ? no idea / pending

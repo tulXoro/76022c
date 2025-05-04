@@ -38,6 +38,10 @@ There are several assumptions made in this project. Please keep them in mind whe
 
 2. The frontend is API agnostic. It makes a specific call to `/api/v1/1/actions/blueprints/1/graph`. The frontend should be able to accept any response from an API in the format of `/api/v1/{some-id}/actions/blueprints/{some-blueprint-id}/graph`. With the current implementation, the frontend is only able to do this through *hard coding* as there is no interface to change the IDs. You may want to change the api route by changing the file in `./app/_lib/ApiRoute.ts` to make the desired API call.
 
+3. The design does not need to be responsive.
+
+    - The frontend was not made with responsiveness in mind. This may mean that any width smaller than the desktop width may not work as intended. Currently, it still works fine but I can not guarantee that it will work.
+
 ## Technologies
 
 Several technologies were used in this project. A list of notable technologies are:
