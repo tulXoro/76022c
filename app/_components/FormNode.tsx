@@ -3,6 +3,8 @@ import { Handle, Position } from "@xyflow/react";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
+import FormItem from "./FormItem";
+
 export default function FormNode({ data }) {
   const [prefill, setPrefill] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,23 +35,36 @@ export default function FormNode({ data }) {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 cursor-default">
+        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 cursor-default z-auto">
           <div className="bg-white p-4 rounded shadow-2xl border-1">
             <h2>{form.name}</h2>
             <p>{form.description}</p>
-            <hr className="my-3"/>
+            <hr className="my-3" />
             <Label htmlFor="prefill-switch">Prefill</Label>
-            <div className="flex flex-row items-center space-x-4">
-              <p className="text-xs w-44 text-gray-400">Prefill fields for this form</p>
-              <Switch id="prefill-switch"
+            <div className="flex flex-row items-center space-x-4 mb-3">
+              <p className="text-xs w-44 text-gray-400">
+                Prefill fields for this form
+              </p>
+              <Switch
+                id="prefill-switch"
                 checked={prefill}
                 onCheckedChange={setPrefill}
               ></Switch>
             </div>
 
-            <form>
+            <div className="flex flex-col gap-2">
+              {
+                form.ui_schema.elements.map((data, _) => {
+                  const key = data.scope.split("/").pop();
+                  const schema = form.field_schema.properties[key];
+
+                  return <FormItem key={_} data={data} schema={schema} />
+                }
+                  
+                )
+              }
               
-              </form>
+            </div>
 
             <button
               className="mt-4 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
@@ -144,7 +159,7 @@ export default function FormNode({ data }) {
 //           "email"
 //         ]
 //       },
-//       "ui_schema": {
+//       "ui_schema": { x
 //         "type": "VerticalLayout",
 //         "elements": [
 //           {
