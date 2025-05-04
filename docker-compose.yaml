@@ -9,9 +9,6 @@ services:
           target: /app/app
           ignore:
             - node_modules
-        - action: sync
-          path: /components
-          target: /app/components
     build:
       context: ./
       dockerfile: Dockerfile

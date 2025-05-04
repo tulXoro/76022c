@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { ReactFlow, Background, Controls } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-import FormNode from "../components/FormNode";
+import FormNode from "./_components/FormNode";
 
 const nodeTypes = {
   form: FormNode,
