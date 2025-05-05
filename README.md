@@ -56,7 +56,7 @@ Several technologies were used in this project. A list of notable technologies a
 
 ## Video
 
-Video that shows me doing the project [here](https://youtu.be/ovnaBUcvlRM).
+Video that shows me doing the project [here](https://youtu.be/jpRBaN4E3jY).
 
 ## Acknowledgements
 
