@@ -5,7 +5,7 @@ import { ReactFlow, Background, Controls } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
 import FormNode from "./_components/FormNode";
-
+import { useFormNodes } from './_context/FormNodes';
 import { ApiRoute } from './_lib/ApiRoute';
 
 const nodeTypes = {
@@ -14,16 +14,14 @@ const nodeTypes = {
 
 
 export default function Home() {
-  const [nodes, setNodes] = React.useState([]);
+  const { nodes, setNodes} = useFormNodes();
   const [edges, setEdges] = React.useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      // Note: port is arbitrarily set to 4000 because the frontend is already using 3000
       const response = await fetch(ApiRoute, { method: 'GET' });
       try {
         const data = await response.json();
-        // console.log(data)
 
         const formNodes = data.nodes.map((node) => {
           // find all forms corresponding to the current node
