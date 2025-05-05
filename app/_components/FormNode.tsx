@@ -56,11 +56,11 @@ export default function FormNode({ data }) {
 
             <div className="flex flex-col gap-2">
               {
-                form.ui_schema.elements.map((data, _) => {
-                  const key = data.scope.split("/").pop();
+                form.ui_schema.elements.map((UIData, _) => {
+                  const key = UIData.scope.split("/").pop();
                   const schema = form.field_schema.properties[key];
 
-                  return <FormItem key={_} data={data} schema={schema} />
+                  return <FormItem key={_} data={UIData} schema={schema} form={data.name} />
                 }
                   
                 )
